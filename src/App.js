@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+import CounterListContainer from "./containers/CounterListContainer"
+import Buttons from "./components/Buttons"
+import getRandomColor from "./lib/getRandomColor"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { connect } from "react-redux"
+import * as actions from "./actions"
+
+class App extends Component {
+  render() {
+    const { onCreate, onRemove } = this.props
+    return (
+      <div className="App">
+        <Buttons onCreate={onCreate} onRemove={onRemove} />
+        <CounterListContainer />
+      </div>
+    )
+  }
 }
 
-export default App;
+const mapToDispatch = (dispatch) => ({
+  onCreate: () => dispatch(actions.create(getRandomColor())),
+  onRemove: () => dispatch(actions.remove())
+})
+
+export default connect(null, mapToDispatch)(App)

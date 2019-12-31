@@ -1,0 +1,31 @@
+.Buttons {
+  display: flex;
+}
+
+.Buttons .btn {
+  flex: 1;
+  display: flex;
+  align-items: "center";
+  justify-content: center;
+  height: 3rem;
+
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.Buttons .add {
+  background-color: green;
+}
+
+.Buttons .add:hover {
+  background-color: aquamarine;
+}
+
+.Buttons .remove {
+  background-color: red;
+}
+
+.Buttons .remove:hover{
+  background-color: coral;
+}
